@@ -3,6 +3,7 @@ import { Schibsted_Grotesk as SchibstedGrotesk, Lora } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/site-header";
+import Providers from "@/components/providers";
 
 const schibstedGrotesk = SchibstedGrotesk({
   subsets: ["latin"],
@@ -29,10 +30,12 @@ export default function RootLayout({
           lora.variable
         )}
       >
-        <div className="relative flex min-h-dvh flex-col bg-background">
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-        </div>
+        <Providers>
+          <div className="relative flex min-h-dvh flex-col bg-background">
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+          </div>
+        </Providers>
       </body>
     </html>
   );

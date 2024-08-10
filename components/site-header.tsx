@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Icons } from "./icons";
 import MainNav from "./main-nav";
 import MobileNav from "./mobile-nav";
+import ModeToggle from "./icons/mode-toggle";
 
 export function SiteHeader() {
   return (
@@ -43,6 +44,7 @@ export function SiteHeader() {
                 <span className="sr-only">X (Twitter)</span>
               </div>
             </Link>
+            <ModeToggle />
             <MobileNav />
           </nav>
         </div>
