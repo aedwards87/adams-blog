@@ -1,22 +1,8 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {};
-
-// export default nextConfig;
-
 import { build } from "velite";
 
-// const isDev = process.argv.indexOf("dev") !== -1;
-// const isBuild = process.argv.indexOf("build") !== -1;
-// if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
-//   process.env.VELITE_STARTED = "1";
-//   const { build } = await import("velite");
-//   await build({ watch: isDev, clean: !isDev });
-// }
-
 /** @type {import('next').NextConfig} */
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  // other next config here...
+  // othor next config here...
   webpack: (config) => {
     config.plugins.push(new VeliteWebpackPlugin());
     return config;
@@ -25,14 +11,19 @@ export default {
 
 class VeliteWebpackPlugin {
   static started = false;
+  constructor(/** @type {import('velite').Options} */ options = {}) {
+    this.options = options;
+  }
   apply(/** @type {import('webpack').Compiler} */ compiler) {
-    // executed three times in nextjs
+    // executed three times in nextjs !!!
     // twice for the server (nodejs / edge runtime) and once for the client
     compiler.hooks.beforeCompile.tapPromise("VeliteWebpackPlugin", async () => {
       if (VeliteWebpackPlugin.started) return;
       VeliteWebpackPlugin.started = true;
       const dev = compiler.options.mode === "development";
-      await build({ watch: dev, clean: !dev });
+      this.options.watch = this.options.watch ?? dev;
+      this.options.clean = this.options.clean ?? !dev;
+      await build(this.options); // start velite
     });
   }
 }

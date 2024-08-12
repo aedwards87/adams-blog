@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 const MainNav = () => {
   const pathname = usePathname();
-  const links = ["projects", "about"];
+  const links = ["blog", "about"];
 
   return (
     <div className="flex items-center space-x-4 lg:space-x-6">
