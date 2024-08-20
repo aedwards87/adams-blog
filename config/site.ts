@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Adam's Portfolio",
-  url: "https://adamedwards.me",
+  url: "https://adams-blog.vercel.app",
+  personalSite: "https://adamedwards.me",
   description: "Graphic Designer and Web Developer",
   author: "Adam Edwards",
   links: {
