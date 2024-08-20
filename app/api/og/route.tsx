@@ -47,7 +47,9 @@ export async function GET(req: NextRequest) {
             <div tw="flex text-xl uppercase font-bold tracking-tight font-normal">
               BLOG POST
             </div>
-            <div tw="flex text-[80px] font-bold text-[50px]">{heading}</div>
+            <div tw="flex text-[80px] font-bold text-[50px] w-[65%]">
+              {heading}
+            </div>
           </div>
           <div tw="flex items-center w-full justify-between">
             <div tw="flex text-xl">{siteConfig.url}</div>

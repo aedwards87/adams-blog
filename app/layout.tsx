@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Schibsted_Grotesk as SchibstedGrotesk, Lora } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/site-header";
 import Providers from "@/components/providers";
+import { siteConfig } from "@/config/site";
 
 const schibstedGrotesk = SchibstedGrotesk({
   subsets: ["latin"],
@@ -12,8 +13,16 @@ const schibstedGrotesk = SchibstedGrotesk({
 const lora = Lora({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
-  title: "Adam's Portfolio",
-  description: "Graphic Designer and Web Developer",
+  title: siteConfig.name,
+  description: siteConfig.description,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 };
 
 export default function RootLayout({

@@ -1,6 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { siteConfig } from "@/config/site";
 
+export const metadata: Metadata = {
+  title: "About Me",
+  description: "Learn more about the author of this blog.",
+};
+
 const AboutPage = () => {
   return (
     <div className="container max-w-6xl py-6 lg:py-10">

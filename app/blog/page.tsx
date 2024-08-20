@@ -4,6 +4,11 @@ import QueryPagination from "@/components/query-pagination";
 import { sortPosts } from "@/lib/utils";
 import { Search } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "My blog",
+  description: "My ramblings on all things web dev",
+};
+
 const POSTS_PER_PAGE = 5;
 
 interface BlogPageProps {
